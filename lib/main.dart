@@ -28,6 +28,8 @@ class MyApp extends StatelessWidget {
     // Can be used when elements can be modified
     final temp = ["Hello", "World"];
 
+    // If a widget carries 1 children then use child or else children
+
     return MaterialApp(
       // home: HomePage(),
       theme:ThemeData(
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
       ),
       themeMode: ThemeMode.light ,
       darkTheme: ThemeData(brightness: Brightness.dark),
-      initialRoute: "/home",
+      // initialRoute: "/home",
       routes: {
         // Do not add this when home specified
         "/" : (context) => LoginPage(),
