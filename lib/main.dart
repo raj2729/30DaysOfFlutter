@@ -13,8 +13,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Material(
-            child: Center(
-                child:
-                    Container(child: Text('Welcome to 30 days of flutter')))));
+            child: Center(child: Container(child: Text('Hello World !!')))));
   }
 }
