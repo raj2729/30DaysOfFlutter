@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_catalogue/home_page.dart';
+import 'package:flutter_catalogue/pages/home_page.dart';
+import 'package:flutter_catalogue/pages/login_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
 
   //All UI work here in build
   @override
+  // BuildContext used to build tree of widgets
   Widget build(BuildContext context) {
     int days = 30;
     double days_double = 30;
@@ -27,7 +29,29 @@ class MyApp extends StatelessWidget {
     final temp = ["Hello", "World"];
 
     return MaterialApp(
-      home: HomePage(),
+      // home: HomePage(),
+      theme:ThemeData(
+        // Adjusts color automatically
+        primarySwatch: Colors.deepPurple,
+      ),
+      themeMode: ThemeMode.light ,
+      darkTheme: ThemeData(brightness: Brightness.dark),
+      initialRoute: "/home",
+      routes: {
+        // Do not add this when home specified
+        "/" : (context) => LoginPage(),
+        "/home":(context) => HomePage(),
+        "/login":(context) => LoginPage(),
+      },
     );
+
+    // To specify default valu, we put in curly braces
+    // To specify required parameters
+    // bring({int rupees = 50 , @required bool bag})
+    // {
+
+    // }
+
+
   }
 }
