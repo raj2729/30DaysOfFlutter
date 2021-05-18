@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
       ),
       themeMode: ThemeMode.light,
       darkTheme: ThemeData(brightness: Brightness.dark),
-      // initialRoute: "/home",
+      initialRoute:MyRoutes.homeRoute,
       routes: {
         // Do not add this when home specified
         "/": (context) => LoginPage(),
