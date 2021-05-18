@@ -13,14 +13,28 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   String name = "";
   bool changedButton = false;
+  
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-        color: Colors.white, // So that image background is properly white
-        child: SingleChildScrollView(
+    return Scaffold(
+      // In material Widget only color 
+        backgroundColor: Colors.white, // So that image background is properly white
+        // appBar: AppBar(
+        //   title:Text(
+        //     'Rajs Application',
+        //     style:TextStyle(
+        //       color: Colors.white,
+        //     ),
+        //   ),
+        // ),
+        body: SingleChildScrollView(
+          // scrollDirection: Axis.horizontal,
+          // reverse: true,
+          // scrollDirection: Axis.vertical,
+          scrollDirection: Axis.vertical,
           child: Column(
-            children: [
+            children:<Widget> [
               // AppBar(
               //   title: Text(
               //     'MyApp',
@@ -50,6 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               Padding(
+                // padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                 padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 30.0),
                 child: Column(
                   children: [
@@ -108,11 +123,11 @@ class _LoginPageState extends State<LoginPage> {
                         setState(() {
                           changedButton = true;
                         });
-                        await Future.delayed(Duration(seconds:1));
-                        // Navigator.pushNamed(context, MyRoutes.homeRoute);
+                        await Future.delayed(Duration(milliseconds: 1300));
+                        Navigator.pushNamed(context, MyRoutes.homeRoute);
                       },
                       child: AnimatedContainer(
-                        duration: Duration(seconds: 1),
+                        duration: Duration(milliseconds: 600),
                         height: 50,
                         width:changedButton?50: 190,
                         // color:Colors.deepPurple,
