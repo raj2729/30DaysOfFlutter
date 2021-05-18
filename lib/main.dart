@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalogue/pages/home_page.dart';
 import 'package:flutter_catalogue/pages/login_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(MyApp());
@@ -31,19 +32,22 @@ class MyApp extends StatelessWidget {
     // If a widget carries 1 children then use child or else children
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       // home: HomePage(),
-      theme:ThemeData(
+      theme: ThemeData(
+        fontFamily: GoogleFonts.lato().fontFamily,
         // Adjusts color automatically
         primarySwatch: Colors.deepPurple,
+        primaryTextTheme: GoogleFonts.latoTextTheme(),
       ),
-      themeMode: ThemeMode.light ,
+      themeMode: ThemeMode.light,
       darkTheme: ThemeData(brightness: Brightness.dark),
       // initialRoute: "/home",
       routes: {
         // Do not add this when home specified
-        "/" : (context) => LoginPage(),
-        "/home":(context) => HomePage(),
-        "/login":(context) => LoginPage(),
+        "/": (context) => LoginPage(),
+        "/home": (context) => HomePage(),
+        "/login": (context) => LoginPage(),
       },
     );
 
@@ -53,7 +57,5 @@ class MyApp extends StatelessWidget {
     // {
 
     // }
-
-
   }
 }
