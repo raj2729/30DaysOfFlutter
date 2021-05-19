@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: HomePage(),
       theme: MyTheme.lightTheme(context) ,
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       darkTheme: MyTheme.darkTheme(context),
       initialRoute:MyRoutes.homeRoute,
       routes: {
