@@ -12,7 +12,11 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Raj Application',style: TextStyle(color: Colors.white), ),
+        // backgroundColor: Colors.white,
+        // elevation: 0.0,
+        // iconTheme: IconThemeData(color: Colors.black),
+        title: Text('Raj Application',
+         ),
       ),
       body: Center(
         child: Container(
