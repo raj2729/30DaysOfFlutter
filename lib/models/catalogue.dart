@@ -1,5 +1,5 @@
 class Item {
-  final String id;
+  final num id;
   final String name;
   final String description;
   final num price;
@@ -17,7 +17,7 @@ class Item {
 
 final products = [
   Item(
-      id: "01",
+      id: 01,
       name: "Iphone 12 Pro",
       description: "Apple Iphone 12th Gen",
       price: 40000,
