@@ -27,7 +27,7 @@ class ItemWidget extends StatelessWidget {
         title: Text("Iphone 12 Max Pro"),
         subtitle: Text(item.description),
         trailing: Text(
-          "Rs ${item.price}",
+          "\$ ${item.price}",
           textScaleFactor: 1.2,
           style: TextStyle(
             fontWeight: FontWeight.bold,

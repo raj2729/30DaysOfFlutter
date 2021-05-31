@@ -25,18 +25,31 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
-    final catalogJson =
-        await rootBundle.loadString("assets/files/catalog.json");
+    await Future.delayed(Duration(seconds: 2));
+    // final catalogJson =
+    //     await rootBundle.loadString("assets/files/catalog.json");
     // print(catalogJson);
     //  To decode dtaa of json
-    final decodedData = jsonDecode("assets/files/catalog.json");
-    // Gives entire json, we want only products
-    var products = decodedData["products"];
+    final catalogJson =
+        await rootBundle.loadString("assets/files/catalog.json");
+    final decodedData = jsonDecode(catalogJson);
+    var productsData = decodedData["products"];
+    CatalogModel.items = List.from(productsData)
+        .map<Item>((item) => Item.fromMap(item))
+        .toList();
+    setState(() {});
+    // var decodedData = jsonDecode("assets/files/catalog.json");
+    // // Gives entire json, we want only
+    // var products = decodedData["products"];
+
+    // CatalogModel.items =
+    //     List.from(products).map((item) => Item.fromMap(item)).toList();
+    // setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    final dummyList = List.generate(4, (index) => CatalogModel.items[0]);
+    // final dummyList = List.generate(4, (index) => CatalogModel.items[0]);
 
     // Scaffold => a lot of built in components
     // Name of components = name of propety
@@ -52,15 +65,21 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
+        child: (CatalogModel.items !=null && CatalogModel.items.isNotEmpty) ? ListView.builder(
           // itemCount: CatalogModel.items.length,
-          itemCount: dummyList.length,
+          // itemCount: dummyList.length,
+          itemCount: CatalogModel.items.length,
           itemBuilder: (context, index) {
             // index is position i.e start of array
             // return ItemWidget(item: CatalogModel.items[index] ,);
-            return ItemWidget(item: dummyList[index]);
+            // return ItemWidget(item: dummyList[index]);
+            return ItemWidget(item: CatalogModel.items[index]);
           },
-        ),
+        ) : 
+        Center(
+          child: CircularProgressIndicator(),
+        ) ,
+        
       ),
       drawer: MyDrawer(),
     );
