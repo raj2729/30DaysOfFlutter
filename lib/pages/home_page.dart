@@ -65,21 +65,69 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: (CatalogModel.items !=null && CatalogModel.items.isNotEmpty) ? ListView.builder(
-          // itemCount: CatalogModel.items.length,
-          // itemCount: dummyList.length,
-          itemCount: CatalogModel.items.length,
-          itemBuilder: (context, index) {
-            // index is position i.e start of array
-            // return ItemWidget(item: CatalogModel.items[index] ,);
-            // return ItemWidget(item: dummyList[index]);
-            return ItemWidget(item: CatalogModel.items[index]);
-          },
-        ) : 
-        Center(
-          child: CircularProgressIndicator(),
-        ) ,
-        
+        child: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
+            ?
+            // ListView.builder(
+            //   // itemCount: CatalogModel.items.length,
+            //   // itemCount: dummyList.length,
+            //   itemCount: CatalogModel.items.length,
+            //   itemBuilder: (context, index) {
+            //     // index is position i.e start of array
+            //     // return ItemWidget(item: CatalogModel.items[index] ,);
+            //     // return ItemWidget(item: dummyList[index]);
+            //     return ItemWidget(item: CatalogModel.items[index]);
+            //   },
+            // ) :
+            GridView.builder(
+                // gridDelegate uses Sliver
+                // Sliver => anything that scrolls has sliver(Scrollable Content)
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  // 2 items in 1 row
+                  crossAxisCount: 2,
+                  // For spacing btwn header child and footer
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 14,
+
+                ),
+                itemBuilder: (context, index) {
+                  final item = CatalogModel.items[index];
+                  return Card(
+                    // shadowColor: Colors.black,
+                    clipBehavior: Clip.antiAlias,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                  // name in header and image in child
+                  // header: : ,
+                    child:
+                    GridTile(
+                      header: Container(
+                        child: Text(item.name , style: TextStyle(color: Colors.white),),
+                        padding:EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Colors.deepPurple,
+
+
+                        ),
+                      ),
+                      child: Image.network(item.image),
+                      // footer: Text(item.price.toString()),
+                      footer:Container(
+                        child: Text(item.price.toString() , style: TextStyle(color: Colors.white),),
+                        padding:EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+
+
+                        ),
+                      ),
+                    )
+
+                  );
+                },
+                itemCount: CatalogModel.items.length,
+              )
+            : Center(
+                child: CircularProgressIndicator(),
+              ),
       ),
       drawer: MyDrawer(),
     );
